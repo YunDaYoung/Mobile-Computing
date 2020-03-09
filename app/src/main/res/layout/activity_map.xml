@@ -20,14 +20,15 @@
             android:layout_height="match_parent"
             android:layout_weight="4"
             android:paddingLeft="10dp"
-            android:hint="Search ....."/>
+            android:hint="@string/search_location"/>
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/searchMap"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_toRightOf="@+id/searchAutoComplete"
-            app:srcCompat="@drawable/ic_search"/>
+            app:srcCompat="@drawable/ic_search"
+            tools:ignore="VectorDrawableCompat" />
     </LinearLayout>
     <fragment
         android:id="@+id/map_fragment"

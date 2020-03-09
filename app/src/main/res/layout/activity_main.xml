@@ -24,7 +24,8 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_map" />
+        app:srcCompat="@drawable/ic_map"
+        tools:ignore="VectorDrawableCompat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_time"
@@ -34,7 +35,8 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_time" />
+        app:srcCompat="@drawable/ic_time"
+        tools:ignore="VectorDrawableCompat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -44,7 +46,8 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_addpx" />
+        app:srcCompat="@drawable/ic_addpx"
+        tools:ignore="VectorDrawableCompat" />
 
     <ListView
         android:id="@+id/list"

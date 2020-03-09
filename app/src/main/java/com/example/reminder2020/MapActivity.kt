@@ -175,7 +175,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 var city = ""
                 try {
                     var addressList = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                    city=addressList.get(0).locality
+                    city=addressList.get(0).locality.toUpperCase(Locale.getDefault())
                     title=addressList.get(0).getAddressLine(0)
                 }catch(e:Exception){
 

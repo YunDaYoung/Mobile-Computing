@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
@@ -23,14 +24,41 @@ class TimeActivity : AppCompatActivity() {
 
         time_create.setOnClickListener {
 
-            val calendar = GregorianCalendar(
+//            val calendar = GregorianCalendar(
+//
+//                date_Picker.year,
+//                date_Picker.month,
+//                date_Picker.dayOfMonth,
+//                time_Picker.currentHour,
+//                time_Picker.currentMinute
+//            )
 
-                date_Picker.year,
-                date_Picker.month,
-                date_Picker.dayOfMonth,
-                time_Picker.currentHour,
-                time_Picker.currentMinute
-            )
+            val calendar =
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                GregorianCalendar(
+
+                    date_Picker.year,
+                    date_Picker.month,
+                    date_Picker.dayOfMonth,
+                    time_Picker.hour,
+                    time_Picker.minute
+                )
+
+
+            } else {
+
+                GregorianCalendar(
+                    date_Picker.year,
+                    date_Picker.month,
+                    date_Picker.dayOfMonth,
+                    time_Picker.currentHour,
+                    time_Picker.currentMinute)
+            }
+
+            Log.d("LAB7", "picked year is " + date_Picker.year)
+            Log.d("LAB7", "picked month is " + date_Picker.month)
 
             if ((et_message.text.toString() != "") && (calendar.timeInMillis > System.currentTimeMillis())) {
                 val reminder = Reminder(

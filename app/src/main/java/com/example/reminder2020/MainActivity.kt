@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                     list.adapter = adapter
                 } else {
                     toast("No reminders yet")
+
                 }
             }
         }
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val CHANNEL_ID = "REMINDER_CHANNEL_ID"
-        val NotificationID = 1567
+        val NotificationID = 1589
 
         fun showNotification(context: Context, message: String){
             var notificationBuilder=NotificationCompat.Builder(context, CHANNEL_ID)
@@ -86,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                 .setStyle(NotificationCompat.BigTextStyle().bigText(message))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-            var notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
             if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
                 val channel = NotificationChannel(CHANNEL_ID,
