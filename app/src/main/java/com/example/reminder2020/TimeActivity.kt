@@ -24,11 +24,11 @@ class TimeActivity : AppCompatActivity() {
 
             val calendar = GregorianCalendar(
 
-                datePicker.year,
-                datePicker.month,
-                datePicker.dayOfMonth,
-                timePicker.currentHour,
-                timePicker.currentMinute
+                date_Picker.year,
+                date_Picker.month,
+                date_Picker.dayOfMonth,
+                time_Picker.currentHour,
+                time_Picker.currentMinute
             )
 
             if ((et_message.text.toString() != "") && (calendar.timeInMillis > System.currentTimeMillis())) {
