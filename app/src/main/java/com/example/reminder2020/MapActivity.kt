@@ -9,6 +9,7 @@ import android.location.Location
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.room.Room
@@ -48,7 +49,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         geofencingClient=LocationServices.getGeofencingClient(this)
         //TODO: map stuff
         map_create.setOnClickListener {
-
             val reminderText = reminder_message.text.toString()
             if(reminderText.isEmpty()){
                 toast("Please provide reminder text")
@@ -63,14 +63,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             var reminder = Reminder(
                 uid = null,
                 time = null,
-                location = String.format("%.3f, %/3f", selectedLocation.latitude, selectedLocation.latitude), //"65.059640\n25.466246"
+                location = String.format("%.3f, %.3f", selectedLocation.latitude, selectedLocation.longitude), //"65.059640\n25.466246"
                 message = reminderText
             )
             doAsync {
                 val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "reminders").build()
 
                 val uid = db.reminderDao().insert(reminder).toInt()
+                Log.e("location", reminder.location)
                 reminder.uid = uid
+                db.reminderDao().insert(reminder).toInt()
                 db.close()
                 createGeofence(selectedLocation, reminder, geofencingClient)
             }
@@ -181,7 +183,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 }
 
-                val marker = addMarker(MarkerOptions().position(location).snippet(city).title(title))
+                val marker = addMarker(MarkerOptions().position(location).snippet(title).title(city))
                 marker.showInfoWindow()
 
                 addCircle(CircleOptions().center(location).strokeColor(
@@ -193,6 +195,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
                 ).fillColor(Color.argb(100, 150, 150, 150)))
                 selectedLocation=location
+                Log.e("location : ", location.toString())
             }
 
         }
