@@ -7,6 +7,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Message
+import android.util.Log
 import android.widget.Toast
 import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_time.*
@@ -53,7 +54,7 @@ class TimeActivity : AppCompatActivity() {
                     finish()
                 }
             } else {
-                toast("Wrong data")
+                toast("Reminder cannot be scheduled for the past time and should contain some text")
             }
         }
     }
